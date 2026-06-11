@@ -5,10 +5,10 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
+import * as ExpoSplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-SplashScreen.preventAutoHideAsync();
+ExpoSplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -18,10 +18,14 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
+    if (fontsLoaded) {
+      ExpoSplashScreen.hideAsync().catch(() => {});
+    }
   }, [fontsLoaded]);
 
-  if (!fontsLoaded) return null;
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <Stack
@@ -29,10 +33,9 @@ export default function RootLayout() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="splash" />
       <Stack.Screen name="index" />
       <Stack.Screen name="historico" />
-      <Stack.Screen name="sobre" />{" "}
+      <Stack.Screen name="sobre" />
     </Stack>
   );
 }

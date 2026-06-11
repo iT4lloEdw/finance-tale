@@ -7,6 +7,13 @@ type Props = {
   totalDespesas: number;
 };
 
+function formatarMoeda(valor: number): string {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+}
+
 export default function ResumoCard({
   totalGeral,
   totalCarteiras,
@@ -25,6 +32,9 @@ export default function ResumoCard({
         style={{
           color: "#FFF",
           opacity: 0.8,
+          fontFamily: "Inter_600SemiBold",
+          fontSize: 12,
+          letterSpacing: 0.8,
         }}
       >
         RESUMO GERAL
@@ -34,17 +44,18 @@ export default function ResumoCard({
         style={{
           color: "#FFF",
           fontSize: 34,
-          fontWeight: "700",
+          fontFamily: "Inter_700Bold",
           marginTop: 10,
         }}
       >
-        R$ {totalGeral.toFixed(2)}
+        {formatarMoeda(totalGeral)}
       </Text>
 
       <Text
         style={{
           color: "#FFF",
           marginTop: 10,
+          fontFamily: "Inter_400Regular",
         }}
       >
         {totalCarteiras} Carteiras • {totalDespesas} Despesas
