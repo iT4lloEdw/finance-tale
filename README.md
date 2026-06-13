@@ -8,6 +8,10 @@ O Finance Tale foi criado com o objetivo de oferecer uma experiência simples e 
 
 O projeto está sendo desenvolvido como parte do meu processo de aprendizado e aperfeiçoamento em desenvolvimento mobile com React Native.
 
+## 📱 Screenshots
+
+Em breve.
+
 ## Funcionalidades
 
 - Cadastro de carteiras financeiras
